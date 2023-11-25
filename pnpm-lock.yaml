@@ -5,15 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 devDependencies:
-  '@types/chai':
-    specifier: 4.2.22
-    version: 4.2.22
   '@types/jest':
     specifier: 29.4.0
     version: 29.4.0
-  '@types/mocha':
-    specifier: 10.0.1
-    version: 10.0.1
   '@types/node':
     specifier: 18.14.0
     version: 18.14.0
@@ -26,18 +20,12 @@ devDependencies:
   rimraf:
     specifier: 4.1.2
     version: 4.1.2
-  source-map-support:
-    specifier: 0.5.20
-    version: 0.5.20
   ts-jest:
     specifier: 29.0.5
     version: 29.0.5(@babel/core@7.23.3)(jest@29.4.3)(typescript@4.4.4)
   ts-node:
     specifier: 10.9.1
     version: 10.9.1(@types/node@18.14.0)(typescript@4.4.4)
-  tsconfig-paths:
-    specifier: 4.1.2
-    version: 4.1.2
   typescript:
     specifier: 4.4.4
     version: 4.4.4
@@ -961,10 +949,6 @@ packages:
     dependencies:
       expect: 29.7.0
       pretty-format: 29.7.0
-    dev: true
-
-  /@types/mocha@10.0.1:
-    resolution: {integrity: sha512-/fvYntiO1GeICvqbQ3doGDIP97vWmvFt83GKguJ6prmQM2iXZfFcq6YE8KteFyRtX2/h5Hf91BYvPodJKFYv5Q==}
     dev: true
 
   /@types/node@18.14.0:
@@ -2327,10 +2311,6 @@ packages:
       brace-expansion: 1.1.11
     dev: true
 
-  /minimist@1.2.8:
-    resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
-    dev: true
-
   /mlly@1.4.2:
     resolution: {integrity: sha512-i/Ykufi2t1EZ6NaPLdfnZk2AX8cs0d+mTzVKuPfqPKPatxLApaBoxJQ9x1/uckXtrS/U5oisPMDkNs0yQTaBRg==}
     dependencies:
@@ -2641,13 +2621,6 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /source-map-support@0.5.20:
-    resolution: {integrity: sha512-n1lZZ8Ve4ksRqizaBQgxXDgKwttHDhyfQjA6YZZn8+AroHbsIz+JjwxQDxbp+7y5OYCI8t1Yk7etjD9CRd2hIw==}
-    dependencies:
-      buffer-from: 1.1.2
-      source-map: 0.6.1
-    dev: true
-
   /source-map-support@0.5.21:
     resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
     dependencies:
@@ -2717,11 +2690,6 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       ansi-regex: 6.0.1
-    dev: true
-
-  /strip-bom@3.0.0:
-    resolution: {integrity: sha512-vavAMRXOgBVNF6nyEEmL3DBK19iRpDcoIwW+swQ+CbGiu7lju6t+JklA1MHweoWtadgt4ISVUsXLyDq34ddcwA==}
-    engines: {node: '>=4'}
     dev: true
 
   /strip-bom@4.0.0:
@@ -2886,15 +2854,6 @@ packages:
         optional: true
     dependencies:
       typescript: 4.4.4
-    dev: true
-
-  /tsconfig-paths@4.1.2:
-    resolution: {integrity: sha512-uhxiMgnXQp1IR622dUXI+9Ehnws7i/y6xvpZB9IbUVOPy0muvdvgXeZOn88UcGPiT98Vp3rJPTa8bFoalZ3Qhw==}
-    engines: {node: '>=6'}
-    dependencies:
-      json5: 2.2.3
-      minimist: 1.2.8
-      strip-bom: 3.0.0
     dev: true
 
   /type-detect@4.0.8:
