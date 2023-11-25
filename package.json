@@ -6,8 +6,8 @@
     "precompile": "rimraf app/**/*.js test/**/*.js",
     "compile": "tsc",
     "pretest": "rimraf app/**/*.js test/**/*.js",
-    "test:vitest": "vitest --coverage",
-    "test:vitest:ui": "vitest --ui"
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "license": "MIT",
   "private": true,

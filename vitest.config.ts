@@ -6,7 +6,7 @@ export default defineConfig({
   test: {
     globals: true,
     include: ['test/vitest/**/*.{spec,test}.{js,ts}'],
-    reporters: ['default', 'html'],
+    reporters: ['verbose', 'html'],
     // outputFile: 'reports/vitest-report.html',
   },
 });
