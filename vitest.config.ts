@@ -6,9 +6,7 @@ export default defineConfig({
   test: {
     globals: true,
     include: ['test/vitest/**/*.{spec,test}.{js,ts}'],
-    coverage: {
-      provider: 'istanbul',
-      reporter: ['text', 'html']
-    }
+    reporters: ['default', 'html'],
+    // outputFile: 'reports/vitest-report.html',
   },
 });
