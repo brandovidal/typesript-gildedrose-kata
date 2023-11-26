@@ -42,6 +42,36 @@ export class GildedRose {
     item.quality = 0
   }
 
+  updateAgedBrieQuality (item: Item) {
+    this.increaseQuality(item)
+
+    if (item.sellIn < GildedRose.AGED_BRIE_DOUBLE_QUALITY_INCREASE_SELL_IN_THRESHOLD) {
+      this.increaseQuality(item)
+    }
+  }
+
+  updateBackstagePassesQuality (item: Item) {
+    this.increaseQuality(item)
+
+    if (item.sellIn < GildedRose.BACKSTAGE_PASSES_DOUBLE_QUALITY_INCREASE_SELL_IN_THRESHOLD) {
+      this.increaseQuality(item)
+    }
+    if (item.sellIn < GildedRose.BACKSTAGE_PASSES_TRIPLE_QUALITY_INCREASE_SELL_IN_THRESHOLD) {
+      this.increaseQuality(item)
+    }
+    if (item.sellIn < GildedRose.BACKSTAGE_PASSES_RESET_QUALITY_INCREASE_SELL_IN_THRESHOLD) {
+      this.resetQuality(item)
+    }
+  }
+
+  updateDefaultItemQuality (item: Item) {
+    this.decreaseQuality(item)
+
+    if (item.sellIn < GildedRose.DEFAULT_ITEM_DOUBLE_QUALITY_DECREASE_SELL_INTHRESHOLD) {
+      this.decreaseQuality(item)
+    }
+  }
+
   updateQuality () {
     for (const item of this.items) {
       if (item.name == GildedRose.SULFURAS) {
@@ -51,29 +81,11 @@ export class GildedRose {
       this.decreaseSellIn(item)
 
       if (item.name == GildedRose.AGED_BRIE) {
-        this.increaseQuality(item)
-
-        if (item.sellIn < GildedRose.AGED_BRIE_DOUBLE_QUALITY_INCREASE_SELL_IN_THRESHOLD) {
-          this.increaseQuality(item)
-        }
+        this.updateAgedBrieQuality(item)
       } else if (item.name == GildedRose.BACKSTAGE_PASSES) {
-        this.increaseQuality(item)
-
-        if (item.sellIn < GildedRose.BACKSTAGE_PASSES_DOUBLE_QUALITY_INCREASE_SELL_IN_THRESHOLD) {
-          this.increaseQuality(item)
-        }
-        if (item.sellIn < GildedRose.BACKSTAGE_PASSES_TRIPLE_QUALITY_INCREASE_SELL_IN_THRESHOLD) {
-          this.increaseQuality(item)
-        }
-        if (item.sellIn < GildedRose.BACKSTAGE_PASSES_RESET_QUALITY_INCREASE_SELL_IN_THRESHOLD) {
-          this.resetQuality(item)
-        }
+        this.updateBackstagePassesQuality(item)
       } else {
-        this.decreaseQuality(item)
-
-        if (item.sellIn < GildedRose.DEFAULT_ITEM_DOUBLE_QUALITY_DECREASE_SELL_INTHRESHOLD) {
-          this.decreaseQuality(item)
-        }
+        this.updateDefaultItemQuality(item)
       }
     }
 
