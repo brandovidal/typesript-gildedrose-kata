@@ -1,10 +1,12 @@
-.DS_Store
-.idea
-node_modules
+.DS_Store/
+.idea/
+node_modules/
+pnpm-lock.yaml
+
 typings
 app/**/*.js
 app/**/*.js.map
 test/**/*.js
 test/**/*.js.map
-coverage
-.nyc_output
+
+report/
