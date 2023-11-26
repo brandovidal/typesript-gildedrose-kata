@@ -8,6 +8,10 @@ export class ItemQuality {
 		this.value = value
 	}
 
+	get currentValue () {
+		return this.value
+	}
+
 	increase (): void {
 		if (this.value < ItemQuality.MAX_QUALITY) {
 			this.value += 1

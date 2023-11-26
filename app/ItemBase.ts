@@ -15,12 +15,12 @@ export abstract class ItemBase {
 
 	abstract update(): void
 
-	sellIn () {
-		return this.itemSellIn
+	get sellIn () {
+		return this.itemSellIn.currentValue
 	}
 
-	quality () {
-		return this.itemQuality
+	get quality () {
+		return this.itemQuality.currentValue
 	}
 
 	decreaseSellIn (): void {

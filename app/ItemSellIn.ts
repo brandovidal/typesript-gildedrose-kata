@@ -5,6 +5,10 @@ export class ItemSellIn {
 		this.value = value
 	}
 
+	get currentValue () {
+		return this.value
+	}
+
 	decrease (): void {
 		this.value -= 1
 	}

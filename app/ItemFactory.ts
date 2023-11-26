@@ -3,8 +3,8 @@ import { ItemQuality } from './ItemQuality'
 import { ItemSellIn } from './ItemSellIn'
 
 import { AgedBrie } from './AgedBrie'
-import { DefaultItem } from './DefaultItem'
 import { BackstagePasses } from './BackstagePasses'
+import { DefaultItem } from './DefaultItem'
 import { Sulfuras } from './Sulfuras'
 
 export class ItemFactory {

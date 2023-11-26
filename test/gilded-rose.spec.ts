@@ -1,7 +1,5 @@
 import { GildedRose } from '@/GildedRose'
 import { ItemFactory } from '@/ItemFactory'
-import { ItemQuality } from '@/ItemQuality'
-import { ItemSellIn } from '@/ItemSellIn'
 
 describe('Gilded Rose Should', () => {
 	it('Test that sellIn value is decreased', () => {
@@ -10,8 +8,7 @@ describe('Gilded Rose Should', () => {
 		const gildedRose = new GildedRose([whateverItemFactory])
 		gildedRose.updateQuality()
 
-		const expectedSellIn = new ItemSellIn(9)
-		expect(whateverItemFactory.sellIn()).toEqual(expectedSellIn)
+		expect(whateverItemFactory.sellIn).toEqual(9)
 	})
 
 	it('Test that quality value is decreased', () => {
@@ -20,8 +17,7 @@ describe('Gilded Rose Should', () => {
 		const gildedRose = new GildedRose([whateverItemFactory])
 		gildedRose.updateQuality()
 
-		const expectedQuality = new ItemQuality(9)
-		expect(whateverItemFactory.quality()).toEqual(expectedQuality)
+		expect(whateverItemFactory.quality).toEqual(9)
 	})
 
 	it('Test that quality decreases twice as much when sellIn by is passed', () => {
@@ -30,8 +26,7 @@ describe('Gilded Rose Should', () => {
 		const gildedRose = new GildedRose([whateverItemFactory])
 		gildedRose.updateQuality()
 
-		const expectedQuality = new ItemQuality(8)
-		expect(whateverItemFactory.quality()).toEqual(expectedQuality)
+		expect(whateverItemFactory.quality).toEqual(8)
 	})
 
 	it('Test that quality is never negative', () => {
@@ -40,8 +35,7 @@ describe('Gilded Rose Should', () => {
 		const gildedRose = new GildedRose([whateverItemFactory])
 		gildedRose.updateQuality()
 
-		const expectedQuality = new ItemQuality(0)
-		expect(whateverItemFactory.quality()).toEqual(expectedQuality)
+		expect(whateverItemFactory.quality).toEqual(0)
 	})
 
 	it('Test Aged Brie increases quality with age', () => {
@@ -50,8 +44,7 @@ describe('Gilded Rose Should', () => {
 		const gildedRose = new GildedRose([agedBrie])
 		gildedRose.updateQuality()
 
-		const expectedQuality = new ItemQuality(2)
-		expect(agedBrie.quality()).toEqual(expectedQuality)
+		expect(agedBrie.quality).toEqual(2)
 	})
 
 	it('Test Aged Brie increases quality past fifty', () => {
@@ -60,8 +53,7 @@ describe('Gilded Rose Should', () => {
 		const gildedRose = new GildedRose([agedBrie])
 		gildedRose.updateQuality()
 
-		const expectedQuality = new ItemQuality(50)
-		expect(agedBrie.quality()).toEqual(expectedQuality)
+		expect(agedBrie.quality).toEqual(50)
 	})
 
 	it('Test Sulfuras never changes', () => {
@@ -70,11 +62,8 @@ describe('Gilded Rose Should', () => {
 		const gildedRose = new GildedRose([sulfuras])
 		gildedRose.updateQuality()
 
-		const expectedQuality = new ItemQuality(25)
-		expect(sulfuras.quality()).toEqual(expectedQuality)
-
-		const expectedSellIn = new ItemSellIn(0)
-		expect(sulfuras.sellIn()).toEqual(expectedSellIn)
+		expect(sulfuras.quality).toEqual(25)
+		expect(sulfuras.sellIn).toEqual(0)
 	})
 
 	it('Test Backstage pass increases quality by one if sell by greater than 10', () => {
@@ -87,8 +76,7 @@ describe('Gilded Rose Should', () => {
 		const gildedRose = new GildedRose([backstagePasses])
 		gildedRose.updateQuality()
 
-		const expectedQuality = new ItemQuality(21)
-		expect(backstagePasses.quality()).toEqual(expectedQuality)
+		expect(backstagePasses.quality).toEqual(21)
 	})
 
 	it('Test Backstage pass increases quality by two if sell by smaller than 5', () => {
@@ -101,8 +89,7 @@ describe('Gilded Rose Should', () => {
 		const gildedRose = new GildedRose([backstagePasses])
 		gildedRose.updateQuality()
 
-		const expectedQuality = new ItemQuality(23)
-		expect(backstagePasses.quality()).toEqual(expectedQuality)
+		expect(backstagePasses.quality).toEqual(23)
 	})
 
 	it('Test Backstage pass loses value after sell by passes', () => {
@@ -115,7 +102,6 @@ describe('Gilded Rose Should', () => {
 		const gildedRose = new GildedRose([backstagePasses])
 		gildedRose.updateQuality()
 
-		const expectedQuality = new ItemQuality(0)
-		expect(backstagePasses.quality()).toEqual(expectedQuality)
+		expect(backstagePasses.quality).toEqual(0)
 	})
 })
