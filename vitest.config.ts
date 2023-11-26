@@ -5,8 +5,8 @@ export default defineConfig({
   plugins: [tsconfigPaths()],
   test: {
     globals: true,
-    include: ['test/vitest/**/*.{spec,test}.{js,ts}'],
+    include: ['test/**/*.{spec,test}.{js,ts}'],
     reporters: ['verbose', 'html'],
-    outputFile: 'coverage/index.html',
+    outputFile: 'report/index.html',
   },
 });

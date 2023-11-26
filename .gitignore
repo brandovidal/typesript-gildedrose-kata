@@ -9,5 +9,4 @@ app/**/*.js.map
 test/**/*.js
 test/**/*.js.map
 
-coverage/
-html/
+report/
