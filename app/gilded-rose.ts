@@ -30,43 +30,41 @@ export class GildedRose {
     }
   }
 
+  resetQuality (item: Item) {
+    item.quality = 0
+  }
+
   updateQuality () {
     for (const item of this.items) {
       if (item.name == GildedRose.SULFURAS) {
         continue
       }
 
-      if (
-        item.name != GildedRose.AGED_BRIE &&
-        item.name != GildedRose.BACKSTAGE_PASSES
-      ) {
-        if (item.name != GildedRose.SULFURAS) {
-          this.decreaseQuality(item)
-        }
-      } else {
+      this.decreaseSellIn(item)
+
+      if (item.name == GildedRose.AGED_BRIE) {
         this.increaseQuality(item)
 
-        if (item.name == GildedRose.BACKSTAGE_PASSES) {
-          if (item.sellIn < 11) {
-            this.increaseQuality(item)
-          }
-          if (item.sellIn < 6) {
-            this.increaseQuality(item)
-          }
-        }
-      }
-
-      if (item.sellIn < 0) {
-        if (item.name != GildedRose.AGED_BRIE) {
-          if (item.name != GildedRose.BACKSTAGE_PASSES) {
-            if (item.name != GildedRose.SULFURAS) {
-              this.decreaseQuality(item)
-            }
-          } else {
-            item.quality = item.quality - item.quality
-          }
-        } else {
+        if (item.sellIn < 0) {
           this.increaseQuality(item)
+        }
+      } else if (item.name == GildedRose.BACKSTAGE_PASSES) {
+        this.increaseQuality(item)
+
+        if (item.sellIn < 10) {
+          this.increaseQuality(item)
+        }
+        if (item.sellIn < 5) {
+          this.increaseQuality(item)
+        }
+        if (item.sellIn < 0) {
+          this.resetQuality(item)
+        }
+      } else {
+        this.decreaseQuality(item)
+
+        if (item.sellIn < 0) {
+          this.decreaseQuality(item)
         }
       }
     }
