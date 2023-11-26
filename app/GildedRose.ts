@@ -1,9 +1,9 @@
-import { ItemBase } from './ItemBase'
+import { Item } from './Item'
 
 export class GildedRose {
-  items: Array<ItemBase>
+  items: Array<Item>
 
-  constructor (items = [] as Array<ItemBase>) {
+  constructor (items = [] as Array<Item>) {
     this.items = items
   }
 

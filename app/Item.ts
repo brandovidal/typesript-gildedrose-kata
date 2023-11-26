@@ -1,17 +1,17 @@
-import { ItemName } from "./ItemName"
-import { ItemQuality } from "./ItemQuality"
-import { ItemSellIn } from "./ItemSellIn"
+import { ItemName } from './ItemName'
+import { ItemQuality } from './ItemQuality'
+import { ItemSellIn } from './ItemSellIn'
 
-export abstract class ItemBase {
-  private itemName: ItemName
-  private itemSellIn: ItemSellIn
-  private itemQuality: ItemQuality
+export abstract class Item {
+	private itemName: ItemName
+	private itemSellIn: ItemSellIn
+	private itemQuality: ItemQuality
 
-  constructor(name: ItemName, sellIn: ItemSellIn, quality: ItemQuality) {
-    this.itemName = name
-    this.itemSellIn = sellIn
-    this.itemQuality = quality
-  }
+	constructor (name: ItemName, sellIn: ItemSellIn, quality: ItemQuality) {
+		this.itemName = name
+		this.itemSellIn = sellIn
+		this.itemQuality = quality
+	}
 
 	abstract update(): void
 

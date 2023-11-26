@@ -1,10 +1,10 @@
-import { ItemBase } from "./ItemBase";
+import { Item } from './Item';
 
-import { ItemName } from "./ItemName";
-import { ItemQuality } from "./ItemQuality";
-import { ItemSellIn } from "./ItemSellIn";
+import { ItemName } from './ItemName';
+import { ItemQuality } from './ItemQuality';
+import { ItemSellIn } from './ItemSellIn';
 
-export class Sulfuras extends ItemBase {
+export class Sulfuras extends Item {
   constructor(name: ItemName, sellIn: ItemSellIn, quality: ItemQuality) {
 		super(name, sellIn, quality)
 	}
