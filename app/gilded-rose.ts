@@ -12,7 +12,15 @@ export class GildedRose {
   }
 
   decreaseSellIn (item: Item) {
-    item.sellIn = item.sellIn - 1
+    item.sellIn -= 1
+  }
+
+  decreaseQuality (item: Item) {
+    item.quality -= 1
+  }
+
+  increaseQuality (item: Item) {
+    item.quality += 1
   }
 
   updateQuality () {
@@ -23,35 +31,36 @@ export class GildedRose {
       ) {
         if (this.items[i].quality > 0) {
           if (this.items[i].name != GildedRose.SULFURAS) {
-            this.items[i].quality = this.items[i].quality - 1
+            this.decreaseQuality(this.items[i])
           }
         }
       } else {
         if (this.items[i].quality < 50) {
-          this.items[i].quality = this.items[i].quality + 1
+          this.increaseQuality(this.items[i])
+
           if (this.items[i].name == GildedRose.BACKSTAGE_PASSES) {
             if (this.items[i].sellIn < 11) {
               if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1
+                this.increaseQuality(this.items[i])
               }
             }
             if (this.items[i].sellIn < 6) {
               if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1
+                this.increaseQuality(this.items[i])
               }
             }
           }
         }
       }
       if (this.items[i].name != GildedRose.SULFURAS) {
-        this.items[i].sellIn = this.items[i].sellIn - 1
+        this.decreaseSellIn(this.items[i])
       }
       if (this.items[i].sellIn < 0) {
         if (this.items[i].name != GildedRose.AGED_BRIE) {
           if (this.items[i].name != GildedRose.BACKSTAGE_PASSES) {
             if (this.items[i].quality > 0) {
               if (this.items[i].name != GildedRose.SULFURAS) {
-                this.items[i].quality = this.items[i].quality - 1
+                this.decreaseQuality(this.items[i])
               }
             }
           } else {
@@ -60,7 +69,7 @@ export class GildedRose {
           }
         } else {
           if (this.items[i].quality < 50) {
-            this.items[i].quality = this.items[i].quality + 1
+            this.increaseQuality(this.items[i])
           }
         }
       }
