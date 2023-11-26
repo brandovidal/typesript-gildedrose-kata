@@ -1,73 +1,84 @@
-import { GildedRose } from '@/gilded-rose'
-import { Item } from '@/item'
+import { GildedRose } from '@/GildedRose'
+import { ItemFactory } from '@/ItemFactory'
+import { ItemQuality } from '@/ItemQuality'
+import { ItemSellIn } from '@/ItemSellIn'
 
 describe('Gilded Rose Should', () => {
 	it('Test that sellIn value is decreased', () => {
-		const whateverItem = new Item('whatever', 10, 0)
+		const whateverItemFactory = ItemFactory.create('whatever', 10, 0)
 
-		const gildedRose = new GildedRose([whateverItem])
+		const gildedRose = new GildedRose([whateverItemFactory])
 		gildedRose.updateQuality()
 
-		expect(whateverItem.sellIn).toEqual(9)
+		const expectedSellIn = new ItemSellIn(9)
+		expect(whateverItemFactory.sellIn()).toEqual(expectedSellIn)
 	})
 
 	it('Test that quality value is decreased', () => {
-		const whateverItem = new Item('whatever', 1, 10)
+		const whateverItemFactory = ItemFactory.create('whatever', 1, 10)
 
-		const gildedRose = new GildedRose([whateverItem])
+		const gildedRose = new GildedRose([whateverItemFactory])
 		gildedRose.updateQuality()
 
-		expect(whateverItem.quality).toEqual(9)
+		const expectedQuality = new ItemQuality(9)
+		expect(whateverItemFactory.quality()).toEqual(expectedQuality)
 	})
 
 	it('Test that quality decreases twice as much when sellIn by is passed', () => {
-		const whateverItem = new Item('whatever', 0, 10)
+		const whateverItemFactory = ItemFactory.create('whatever', 0, 10)
 
-		const gildedRose = new GildedRose([whateverItem])
+		const gildedRose = new GildedRose([whateverItemFactory])
 		gildedRose.updateQuality()
 
-		expect(whateverItem.quality).toEqual(8)
+		const expectedQuality = new ItemQuality(8)
+		expect(whateverItemFactory.quality()).toEqual(expectedQuality)
 	})
 
 	it('Test that quality is never negative', () => {
-		const whateverItem = new Item('whatever', 0, 0)
+		const whateverItemFactory = ItemFactory.create('whatever', 0, 0)
 
-		const gildedRose = new GildedRose([whateverItem])
+		const gildedRose = new GildedRose([whateverItemFactory])
 		gildedRose.updateQuality()
 
-		expect(whateverItem.quality).toEqual(0)
+		const expectedQuality = new ItemQuality(0)
+		expect(whateverItemFactory.quality()).toEqual(expectedQuality)
 	})
 
 	it('Test Aged Brie increases quality with age', () => {
-		const agedBrie = new Item('Aged Brie', 5, 1)
+		const agedBrie = ItemFactory.create('Aged Brie', 5, 1)
 
 		const gildedRose = new GildedRose([agedBrie])
 		gildedRose.updateQuality()
 
-		expect(agedBrie.quality).toEqual(2)
+		const expectedQuality = new ItemQuality(2)
+		expect(agedBrie.quality()).toEqual(expectedQuality)
 	})
 
 	it('Test Aged Brie increases quality past fifty', () => {
-		const agedBrie = new Item('Aged Brie', 5, 50)
+		const agedBrie = ItemFactory.create('Aged Brie', 5, 50)
 
 		const gildedRose = new GildedRose([agedBrie])
 		gildedRose.updateQuality()
 
-		expect(agedBrie.quality).toEqual(50)
+		const expectedQuality = new ItemQuality(50)
+		expect(agedBrie.quality()).toEqual(expectedQuality)
 	})
 
 	it('Test Sulfuras never changes', () => {
-		const sulfuras = new Item('Sulfuras, Hand of Ragnaros', 0, 25)
+		const sulfuras = ItemFactory.create('Sulfuras, Hand of Ragnaros', 0, 25)
 
 		const gildedRose = new GildedRose([sulfuras])
 		gildedRose.updateQuality()
 
-		expect(sulfuras.quality).toEqual(25)
-		expect(sulfuras.sellIn).toEqual(0)
+		const expectedQuality = new ItemQuality(25)
+		expect(sulfuras.quality()).toEqual(expectedQuality)
+
+		const expectedSellIn = new ItemSellIn(0)
+		expect(sulfuras.sellIn()).toEqual(expectedSellIn)
 	})
 
 	it('Test Backstage pass increases quality by one if sell by greater than 10', () => {
-		const backstagePasses = new Item(
+		const backstagePasses = ItemFactory.create(
 			'Backstage passes to a TAFKAL80ETC concert',
 			11,
 			20
@@ -76,11 +87,12 @@ describe('Gilded Rose Should', () => {
 		const gildedRose = new GildedRose([backstagePasses])
 		gildedRose.updateQuality()
 
-		expect(backstagePasses.quality).toEqual(21)
+		const expectedQuality = new ItemQuality(21)
+		expect(backstagePasses.quality()).toEqual(expectedQuality)
 	})
 
 	it('Test Backstage pass increases quality by two if sell by smaller than 5', () => {
-		const backstagePasses = new Item(
+		const backstagePasses = ItemFactory.create(
 			'Backstage passes to a TAFKAL80ETC concert',
 			5,
 			20
@@ -89,11 +101,12 @@ describe('Gilded Rose Should', () => {
 		const gildedRose = new GildedRose([backstagePasses])
 		gildedRose.updateQuality()
 
-		expect(backstagePasses.quality).toEqual(23)
+		const expectedQuality = new ItemQuality(23)
+		expect(backstagePasses.quality()).toEqual(expectedQuality)
 	})
 
 	it('Test Backstage pass loses value after sell by passes', () => {
-		const backstagePasses = new Item(
+		const backstagePasses = ItemFactory.create(
 			'Backstage passes to a TAFKAL80ETC concert',
 			0,
 			20
@@ -102,6 +115,7 @@ describe('Gilded Rose Should', () => {
 		const gildedRose = new GildedRose([backstagePasses])
 		gildedRose.updateQuality()
 
-		expect(backstagePasses.quality).toEqual(0)
+		const expectedQuality = new ItemQuality(0)
+		expect(backstagePasses.quality()).toEqual(expectedQuality)
 	})
 })
