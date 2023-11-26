@@ -10,6 +10,14 @@ export class GildedRose {
   private static MAX_QUALITY = 50
   private static MIN_QUALITY = 0
 
+  private static AGED_BRIE_DOUBLE_QUALITY_INCREASE_SELL_IN_THRESHOLD = 0
+
+  private static BACKSTAGE_PASSES_DOUBLE_QUALITY_INCREASE_SELL_IN_THRESHOLD = 10
+  private static BACKSTAGE_PASSES_TRIPLE_QUALITY_INCREASE_SELL_IN_THRESHOLD = 5
+  private static BACKSTAGE_PASSES_RESET_QUALITY_INCREASE_SELL_IN_THRESHOLD = 0
+
+  private static DEFAULT_ITEM_DOUBLE_QUALITY_DECREASE_SELL_INTHRESHOLD = 0
+
   constructor (items = [] as Array<Item>) {
     this.items = items
   }
@@ -45,25 +53,25 @@ export class GildedRose {
       if (item.name == GildedRose.AGED_BRIE) {
         this.increaseQuality(item)
 
-        if (item.sellIn < 0) {
+        if (item.sellIn < GildedRose.AGED_BRIE_DOUBLE_QUALITY_INCREASE_SELL_IN_THRESHOLD) {
           this.increaseQuality(item)
         }
       } else if (item.name == GildedRose.BACKSTAGE_PASSES) {
         this.increaseQuality(item)
 
-        if (item.sellIn < 10) {
+        if (item.sellIn < GildedRose.BACKSTAGE_PASSES_DOUBLE_QUALITY_INCREASE_SELL_IN_THRESHOLD) {
           this.increaseQuality(item)
         }
-        if (item.sellIn < 5) {
+        if (item.sellIn < GildedRose.BACKSTAGE_PASSES_TRIPLE_QUALITY_INCREASE_SELL_IN_THRESHOLD) {
           this.increaseQuality(item)
         }
-        if (item.sellIn < 0) {
+        if (item.sellIn < GildedRose.BACKSTAGE_PASSES_RESET_QUALITY_INCREASE_SELL_IN_THRESHOLD) {
           this.resetQuality(item)
         }
       } else {
         this.decreaseQuality(item)
 
-        if (item.sellIn < 0) {
+        if (item.sellIn < GildedRose.DEFAULT_ITEM_DOUBLE_QUALITY_DECREASE_SELL_INTHRESHOLD) {
           this.decreaseQuality(item)
         }
       }
